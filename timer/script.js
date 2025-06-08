@@ -2,7 +2,7 @@ const datePicker = document.getElementById('datePicker');
 const timePicker = document.getElementById('timePicker');  
 const timerDisplay = document.getElementById('timerDisplay');
 const startBtn = document.getElementById('startBtn');
-const stopBtn = document.getElementById('stopBtn');
+const pauseBtn = document.getElementById('pauseBtn');
 const resetBtn = document.getElementById('resetBtn');
 
 let countdownInterval;
@@ -58,6 +58,15 @@ function resetTimer() {
     stopBtn.disabled = true;
     resetBtn.disabled = true;
 }
+resetBtn.addEventListener('click', resetTimer);
+function pauseTimer() {
+    paused = true;
+    clearInterval(countdownInterval);
+    startBtn.textContent = "Resume";
+    stopBtn.disabled = false;
+    resetBtn.disabled = false;
+}
+pauseBtn.addEventListener('click', pauseTimer);
 
 
 
